@@ -1,0 +1,221 @@
+body {
+	font-family: "lato", sans-serif;
+	padding: 0px;
+	box-sizing: border-box;
+	margin: 0;
+	height: 100%;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	background-color: rgb(34, 34, 34);
+	color: white;
+}
+
+html {
+	height: 100%;
+}
+
+header {
+	padding: 0% 2% 0% 2%;
+	flex-direction: row;
+	background: rgb(54, 54, 54);
+	color: #000000;
+	display: flex;
+	justify-content: space-between;
+}
+
+nav {
+	display: flex;
+	width: 70%;
+	justify-content: flex-end;
+	align-items: center;
+	font-family: sans-serif;
+}
+
+nav ul {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+nav ul li {
+	list-style: none;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: #000000;
+	font-size: 26px;
+	display: block;
+	padding: 10px 15px;
+	position: relative;
+}
+
+nav ul li a:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: rgb(255, 255, 255);
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: all 0.5s;
+}
+
+nav ul li a:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #ffffff;
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: all 0.5s;
+}
+
+nav ul li a:hover {
+	color: #ffffff;
+}
+
+nav ul li a:hover:before,
+ul li a:hover:after {
+	transform: scaleX(1);
+}
+
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 30px;
+	bottom: 0;
+	position: fixed;
+	color: white;
+	background-color: rgb(34, 34, 34);
+	line-height: 1.3;
+	font-family: Menlo, monospace;
+	font-size: calc(0.4em + 1vmin);
+}
+
+.footer a:link,
+a:visited {
+	color: rgb(255, 255, 255);
+	background-color: transparent;
+	text-decoration: underline;
+	font-size: 18px;
+}
+
+.footer p,
+a {
+	color: white;
+	text-decoration: none;
+}
+
+#checkbox {
+	display: none;
+}
+
+@media only screen and (max-width: 767px) {
+	/* Masquer l'élément input */
+
+	nav {
+		width: 10%;
+	}
+
+	header {
+		padding: 1% 7% 1% 7%;
+	}
+
+	#checkbox:not(:checked) + header nav ul {
+		display: none;
+	}
+
+	#checkbox:checked + header nav ul {
+		z-index: 9;
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 90px; /* Ajustez la position en fonction de votre mise en page */
+		left: 0;
+		width: 100%;
+		background: rgb(54, 54, 54);
+		color: #fff;
+	}
+
+	nav li {
+		margin: 10px;
+	}
+
+	.toggle {
+		position: relative;
+		width: 40px;
+		cursor: pointer;
+		display: flex;
+		height: calc(4px * 3 + 11px * 2);
+	}
+
+	.bar {
+		position: absolute;
+		left: 0;
+		right: 0;
+		height: 4px;
+		border-radius: calc(4px / 2);
+		background: white;
+		color: inherit;
+		opacity: 1;
+		transition: none 0.35s cubic-bezier(0.5, -0.35, 0.35, 1.5) 0s;
+	}
+
+	/***** Spin Animation *****/
+
+	.bar--top {
+		bottom: calc(50% + 11px + 4px / 2);
+		transition-property: bottom, transform;
+		transition-delay: calc(0s + 0.35s), 0s;
+	}
+
+	.bar--middle {
+		top: calc(50% - 4px / 2);
+		transition-property: opacity;
+		transition-delay: calc(0s + 0.35s);
+	}
+
+	.bar--bottom {
+		top: calc(50% + 11px + 4px / 2);
+		transition-property: top, transform;
+		transition-delay: calc(0s + 0.35s), 0s;
+	}
+
+	#checkbox:checked + header nav .toggle .bar--top {
+		bottom: calc(50% - 4px / 2);
+		transform: rotate(135deg);
+		transition-delay: 0s, calc(0s + 0.35s);
+	}
+
+	#checkbox:checked + header nav .toggle .bar--middle {
+		opacity: 0;
+		transition-duration: 0s;
+		transition-delay: calc(0s + 0.35s);
+	}
+
+	#checkbox:checked + header nav .toggle .bar--bottom {
+		top: calc(50% - 4px / 2);
+		transform: rotate(225deg);
+		transition-delay: 0s, calc(0s + 0.35s);
+	}
+}
+
+/* Tablettes (768px < 1023px) */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+}
+
+/* Desktops (> 1024px) */
+@media only screen and (min-width: 1024px) {
+}
