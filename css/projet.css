@@ -111,3 +111,11 @@ a {
 	color: whitesmoke;
 	box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
+
+@media only screen and (max-width: 767px) {
+	/* Masquer l'élément input */
+
+	main {
+		margin: 0 30% 0 30%;
+	}
+}
